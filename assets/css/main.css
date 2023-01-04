@@ -1994,10 +1994,8 @@ input, select, textarea {
 	}
 
 		.wrapper.style1 {
-			background-image: none; /*url("images/hubble.jpg");*/
+			background-image: none; 
 			background-color: #fff;
-			/*background-position: center center;
-			background-size: cover;*/
 		}
 
 		.wrapper.style2 {
