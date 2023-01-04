@@ -1996,6 +1996,8 @@ input, select, textarea {
 		.wrapper.style1 {
 			background-image: url("images/hubble.jpg");
 			background-color: #fff;
+			background-position: center center;
+			background-size: cover;
 		}
 
 		.wrapper.style2 {
