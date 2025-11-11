@@ -2446,54 +2446,62 @@ input, select, textarea {
 
 
 /* =========================================
-   Small Screen Dropdown Menu
+   Small Screen Dropdown Menu (fixed)
    ========================================= */
 
-/* Menu label (appears only on small screens) */
+/* Default: full nav visible, no "Menu" label */
 #nav .menu-label {
   display: none;
-  text-align: center;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  padding: 0.75em 0;
-  background-color: #282828; /* same gray bar color */
 }
 
-/* Default nav styles: keep as-is for large screens */
+/* Desktop nav stays as-is */
 #nav ul.container {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
-  transition: max-height 0.3s ease;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* On small screens: hide links initially */
+/* ---------- Mobile layout ---------- */
 @media screen and (max-width: 736px) {
+  /* Show the gray top bar with "Menu" label */
   #nav {
     position: relative;
+    background-color: #282828;
+    text-align: center;
     z-index: 1000;
   }
 
-  /* Hide the normal nav layout */
+  /* Show only the label at first */
+  #nav .menu-label {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75em 0;
+    user-select: none;
+  }
+
+  /* Hide the nav links by default */
   #nav ul.container {
     display: none;
     flex-direction: column;
-    background-color: #282828;
-    text-align: center;
+    background-color: #282828; /* solid background so links are visible */
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Show when expanded */
+  /* Show links when menu opened */
   #nav ul.container.show {
     display: flex;
   }
 
-  /* Make each link fill the width */
+  /* Style each link */
   #nav ul.container li {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   #nav ul.container li a {
@@ -2506,11 +2514,7 @@ input, select, textarea {
   #nav ul.container li a:hover {
     background-color: #383838;
   }
-
-  /* Show the “Menu” label instead of nav links */
-  #nav .menu-label {
-    display: block;
-  }
 }
+
 
 
