@@ -2444,109 +2444,134 @@ input, select, textarea {
 
 	}
 
-/* =========================================
-   Responsive Hamburger Menu for Small Screens
-   ========================================= */
+/* ---------------------------
+  Robust hamburger override
+  Paste this at the very end of main.css
+   --------------------------- */
 
+/* Ensure nav is stacking above everything */
 #nav {
   position: relative;
+  z-index: 100000; /* ensure it's above other things */
 }
 
-/* --- Toggle Button Base --- */
+/* Toggle button: always available on small screens (we keep display:none for large screens) */
 #nav .nav-toggle {
-  display: none;
-  position: absolute;
-  right: 1em;
-  top: 50%;
-  transform: translateY(-50%); /* centers vertically */
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 25px;
-  z-index: 10001;
+  display: none; /* large screens unchanged */
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  z-index: 100001 !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* --- Hamburger bars --- */
+/* Three bars (force visible) */
 #nav .nav-toggle span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #000000; /* black bars by default (white background) */
-  margin: 5px 0;
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  display: block !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: #000 !important;    /* black bars by default (visible on white) */
+  margin: 4px 0 !important;
+  border-radius: 2px !important;
+  transition: transform 0.28s cubic-bezier(.4,.02,.23,1), opacity 0.18s linear, background-color 0.18s linear !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
 }
 
-/* --- Animate into X when active --- */
+/* When menu open: bars turn white and form an X */
+#nav .nav-toggle.active span {
+  background: #fff !important;
+}
 #nav .nav-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg) !important;
 }
 #nav .nav-toggle.active span:nth-child(2) {
-  opacity: 0;
+  opacity: 0 !important;
+  transform: scaleX(0.8) !important;
 }
 #nav .nav-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg) !important;
 }
 
-/* --- When active (menu open), make bars white for dark background --- */
-#nav .nav-toggle.active span {
-  background: #ffffff;
+/* Make sure the menu does not create a gray overlap at the top:
+   Hide any extra top-border / pseudo-element that might push under the button.
+   (This is defensive — if you don't have such, it won't hurt.) */
+#nav:before,
+#nav:after,
+#nav .container:before,
+#nav .container:after {
+  display: none !important;
+  content: none !important;
 }
 
-/* --- Hide nav links when collapsed --- */
-#nav ul {
-  transition: max-height 0.3s ease-out;
-  overflow: hidden;
-}
-
-/* --- When active, reveal links --- */
-#nav ul.show {
-  display: block;
-  max-height: 500px;
-}
-
-/* --- Mobile styles --- */
+/* Mobile specific: show button, stack menu, ensure no overlap */
 @media screen and (max-width: 736px) {
-  #nav {
-    height: auto;
-    line-height: normal;
-    padding: 0.5em 0;
-  }
 
+  /* show the toggle */
   #nav .nav-toggle {
-    display: block;
+    display: block !important;
   }
 
-  #nav ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background-color: #282828;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  /* Make sure the nav itself doesn't have fixed height that pushes the toggle out */
+  #nav {
+    height: auto !important;
+    line-height: normal !important;
+    padding: 0.45em 0 !important;
   }
 
-  #nav ul.show {
-    display: flex;
+  /* container UL becomes a vertical menu (hidden by default) */
+  #nav ul.container {
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background-color: #282828 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  #nav li {
-    display: block;
-    width: 100%;
+  /* visible state */
+  #nav ul.container.show {
+    display: flex !important;
   }
 
-  #nav a {
-    display: block;
-    padding: 0.75em;
-    border-radius: 0;
-    width: 100%;
+  /* make each link full width and not overlap the toggle */
+  #nav ul.container li {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  #nav a:hover {
-    background-color: #383838;
+  #nav ul.container li a {
+    display: block !important;
+    padding: 12px 20px !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    color: #fff !important;
+  }
+
+  #nav ul.container li a:hover {
+    background-color: #383838 !important;
+  }
+
+  /* ensure toggle does not get covered by the expanding menu:
+     put the menu below the nav bar so the toggle stays on top */
+  #nav .nav-toggle {
+    position: absolute !important;
+  }
+  #nav ul.container {
+    margin-top: calc(44px) !important; /* push the vertical menu below the top bar height */
   }
 }
+
 
 
