@@ -19,6 +19,11 @@
 
 		<!-- Nav -->
 			<nav id="nav">
+				<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</button>
 				<ul class="container">
 					<li><a href="#about">About Me</a></li>
 					<li><a href="#research">Research</a></li>
@@ -42,7 +47,7 @@
 							<header>
 								<h1>Hi! I'm <strong>Ryan Golant</strong>.</h1>
 							</header>
-							<p>I'm a sixth-year Ph.D. candidate and a NASA FINESST Future Investigator in the Columbia University Department of Astronomy &amp; Astrophysics. My research broadly addresses the interplay between magnetic fields and turbulence in astrophysical plasmas. I'm particularly interested in the question of <em>cosmic magnetogenesis</em>, or how the first magnetic fields in our  Universe came into being; my thesis work &mdash; advised by Professors Greg Bryan and Lorenzo Sironi &mdash; looks at how magnetic fields may arise from turbulence and how this could explain the presence of magnetic fields in the vast empty regions of the Universe called cosmic voids. To tackle this puzzle, I have gained expertise in both plasma physics and cosmology, employing both small-scale kinetic plasma simulations and large-scale cosmological simulations (and developing software for the latter). You can read more about my research <a href="#research">here</a>.</p>
+							<p>I'm a sixth-year Ph.D. candidate and a NASA FINESST Future Investigator in the Columbia University Department of Astronomy &amp; Astrophysics. My research broadly addresses the interplay between magnetic fields and turbulence in hot and diffuse (collisionless) astrophysical plasmas. I'm particularly interested in the question of <em>cosmic magnetogenesis</em>, or how the first magnetic fields in our  Universe came into being; my thesis work &mdash; advised by Professors Greg Bryan and Lorenzo Sironi &mdash; looks at how magnetic fields may arise from turbulence and how this could explain the presence of magnetic fields in the vast empty regions of the Universe called cosmic voids. To tackle this puzzle, I have gained expertise in both plasma physics and cosmology, employing both small-scale kinetic plasma simulations and large-scale cosmological simulations (and developing software for the latter). You can read more about my research <a href="#research">here</a>.</p>
 
 							<p>I'm also very interested in teaching, science communication, and public outreach. I have dedicated much of my grad school career thus far to pedagogical development, science writing, and community service leveraging my scientific expertise: I have designed, from scratch, my own course on astrophysical magnetic fields (and I will be teaching this course in Spring 2026), I have co-led a published education research study, I have organized pedagogy workshops and seminars for my department and for the university, I have written numerous articles on astronomy research for a broad audience, and I have led my department's public outreach program. You can read more about my <a href="#teaching">teaching</a>, <a href="#writing">writing</a>, and <a href="#outreach">outreach</a> down below.</p>
 
@@ -274,6 +279,16 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+			const toggle = document.getElementById('nav-toggle');
+			const menu = document.querySelector('#nav ul');
+
+			toggle.addEventListener('click', () => {
+			  menu.classList.toggle('show');
+			  toggle.classList.toggle('active');
+			});
+			</script>
 
 	</body>
 </html>
