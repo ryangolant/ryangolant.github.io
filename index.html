@@ -19,12 +19,10 @@
 
 		<!-- Nav -->
 			<nav id="nav">
-				<!-- <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-				  <span></span>
-				  <span></span>
-				  <span></span>
-				</button> -->
-				<ul class="container">
+
+				<div class="menu-label" id="menu-label">Menu</div>
+
+				<ul class="container" id="nav-links">
 					<li><a href="#about">About Me</a></li>
 					<li><a href="#research">Research</a></li>
 					<li><a href="#teaching">Teaching</a></li>
@@ -280,15 +278,14 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			<!-- <script>
-			const toggle = document.getElementById('nav-toggle');
-			const menu = document.querySelector('#nav ul');
+			<script>
+			const menuLabel = document.getElementById('menu-label');
+			const navLinks = document.getElementById('nav-links');
 
-			toggle.addEventListener('click', () => {
-			  menu.classList.toggle('show');
-			  toggle.classList.toggle('active');
+			menuLabel.addEventListener('click', () => {
+			  navLinks.classList.toggle('show');
 			});
-			</script> -->
+			</script>
 
 	</body>
 </html>
