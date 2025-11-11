@@ -2461,12 +2461,12 @@ input, select, textarea {
   z-index: 10001;
 }
 
-/* Hamburger icon bars */
+/* Hamburger bars */
 #nav .nav-toggle span {
   display: block;
   width: 100%;
   height: 3px;
-  background: #fff;
+  background: #ffffff; /* ensure visible against dark nav */
   margin: 6px 0;
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
@@ -2492,7 +2492,7 @@ input, select, textarea {
 /* When active, reveal links */
 #nav ul.show {
   display: block;
-  max-height: 500px; /* expand smoothly */
+  max-height: 500px;
 }
 
 /* --- Mobile styles --- */
@@ -2537,3 +2537,4 @@ input, select, textarea {
     background-color: #383838;
   }
 }
+
