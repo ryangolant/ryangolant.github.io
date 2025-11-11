@@ -2448,11 +2448,17 @@ input, select, textarea {
    Responsive Hamburger Menu for Small Screens
    ========================================= */
 
+#nav {
+  position: relative;
+}
+
+/* --- Toggle Button Base --- */
 #nav .nav-toggle {
   display: none;
   position: absolute;
   right: 1em;
-  top: 0.6em;
+  top: 50%;
+  transform: translateY(-50%); /* centers vertically */
   background: none;
   border: none;
   cursor: pointer;
@@ -2461,35 +2467,40 @@ input, select, textarea {
   z-index: 10001;
 }
 
-/* Hamburger bars */
+/* --- Hamburger bars --- */
 #nav .nav-toggle span {
   display: block;
   width: 100%;
   height: 3px;
-  background: #ffffff; /* ensure visible against dark nav */
-  margin: 6px 0;
+  background: #000000; /* black bars by default (white background) */
+  margin: 5px 0;
   border-radius: 2px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Animate into X when active */
+/* --- Animate into X when active --- */
 #nav .nav-toggle.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 #nav .nav-toggle.active span:nth-child(2) {
   opacity: 0;
 }
 #nav .nav-toggle.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Hide nav links when collapsed */
+/* --- When active (menu open), make bars white for dark background --- */
+#nav .nav-toggle.active span {
+  background: #ffffff;
+}
+
+/* --- Hide nav links when collapsed --- */
 #nav ul {
   transition: max-height 0.3s ease-out;
   overflow: hidden;
 }
 
-/* When active, reveal links */
+/* --- When active, reveal links --- */
 #nav ul.show {
   display: block;
   max-height: 500px;
@@ -2537,4 +2548,5 @@ input, select, textarea {
     background-color: #383838;
   }
 }
+
 
